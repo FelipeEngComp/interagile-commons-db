@@ -10,9 +10,9 @@
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.interagile.cliente</groupId>
-	<artifactId>commons-db</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<artifactId>interagile-commons-db</artifactId>
+	<version>1.0.0</version>
+	<name>commons</name>
 	<description>Projeto para acesso e configuração do db</description>
 
 	<properties>
@@ -80,6 +80,14 @@
 		</dependency>
 
 	</dependencies>
+	
+	<distributionManagement>
+		<repository>
+			<id>commons-db</id>
+			<name>interagile-commons-db</name>
+			<url>https://maven.pkg.github.com/FelipeEngComp/interagile-commons-db</url>
+		</repository>
+	</distributionManagement>
 
 	<build>
 		<plugins>
