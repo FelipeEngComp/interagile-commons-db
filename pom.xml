@@ -9,10 +9,11 @@
 		<version>2.2.4.RELEASE</version>
 		<relativePath /> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.interagile.cliente</groupId>
+	<groupId>com.interagile</groupId>
 	<artifactId>interagile-commons-db</artifactId>
 	<version>1.0.0</version>
-	<name>commons</name>
+	<packaging>jar</packaging>
+	<name>commons-db</name>
 	<description>Projeto para acesso e configuração do db</description>
 
 	<properties>
@@ -90,12 +91,22 @@
 	</distributionManagement>
 
 	<build>
-		<plugins>
-			<plugin>
-				<groupId>org.springframework.boot</groupId>
-				<artifactId>spring-boot-maven-plugin</artifactId>
-			</plugin>
-		</plugins>
-	</build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-dependency-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>copy-dependencies</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>
