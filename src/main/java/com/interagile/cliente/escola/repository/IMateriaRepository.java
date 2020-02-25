@@ -11,7 +11,7 @@ import com.interagile.cliente.escola.dao.MateriaDAO;
 public interface IMateriaRepository extends JpaRepository<MateriaDAO, Long> {
 
 	@Query("select m from MateriaDAO m where m.codigo =:codigo")
-	MateriaDAO findMateriaByCodigo(String codigo);
+	MateriaDAO findMateriaByCodigo(@Param("codigo")String codigo);
 
 	@Transactional
 	@Modifying
