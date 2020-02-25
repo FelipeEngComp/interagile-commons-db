@@ -1,19 +1,15 @@
 package com.interagile.cliente.escola.dao;
 
 import java.io.Serializable;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -55,15 +51,5 @@ public class MateriaDAO implements Serializable{
 	
 	@Column(name = "cursada")
 	private boolean cursada;
-	
-	@Column(name = "id_curso")
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<CursoDAO> cursoDao;
-	
-	@Column(name = "id_usr")
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JsonIgnore
-	private List<UsuarioDAO> usuarios;
 	
 }
