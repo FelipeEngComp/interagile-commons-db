@@ -10,7 +10,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
@@ -47,12 +46,8 @@ public class CursoDAO implements Serializable{
 	@Column(name = "semestres")
 	private int semestres;
 	
-	@Column(name = "id_usr")
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<UsuarioDAO> usuarios;
-	
 	@JoinColumn(name = "id_materia")
-	@ManyToMany(fetch = FetchType.LAZY)
+	@OneToMany(targetEntity = MateriaDAO.class,fetch = FetchType.LAZY)
 	private List<MateriaDAO> materias;
 	
 }
