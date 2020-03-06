@@ -22,7 +22,7 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name ="tb_usuario_faculdade")
+@Table(name = "tb_usuario")
 public class UsuarioDAO implements Serializable{
 	
 	private static final long serialVersionUID = 5402066257568990643L;
@@ -33,8 +33,8 @@ public class UsuarioDAO implements Serializable{
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_usr")
-	private long id;
+	@Column(name = "id_usuario")
+	private long idUsuario;
 	
 	@Column(name = "cpf")
 	@NonNull
@@ -44,32 +44,30 @@ public class UsuarioDAO implements Serializable{
 	@NonNull
 	private String email;
 	
-	@Column(name = "telefone")
+	@Column(name = "tel")
 	private Long telefone;
 	
 	@Column(name = "nome")
 	@NonNull
 	private String nome;
 	
-	@Column(name = "matricula")
+	@Column(name = "mat")
 	@NonNull
 	private String matricula;
 	
-	@Column(name = "tipo_usuario")
+	@Column(name = "tipousr")
 	private int tipoUsuario;
 	
-	@Column(name = "semestre")
+	@Column(name = "smest")
 	private int semestre;
 	
 	@JoinColumn(name = "id_curso")
 	@ManyToOne(fetch = FetchType.EAGER)
 	private CursoDAO curso;
 	
-	@JoinColumn(name = "id_materia")
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<MateriaDAO> materias;
 	
-	@JoinColumn(name = "id_livro")
 	@ManyToMany(fetch = FetchType.LAZY)
 	private List<LivroDAO> livros;
 	

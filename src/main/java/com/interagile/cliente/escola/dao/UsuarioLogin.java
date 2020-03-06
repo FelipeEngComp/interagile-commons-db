@@ -17,7 +17,7 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name="tb_usuario_login")
+@Table(name = "tb_usuario_login")
 public class UsuarioLogin implements Serializable{
 	
 	private static final long serialVersionUID = -3939672072897853265L;
@@ -25,10 +25,10 @@ public class UsuarioLogin implements Serializable{
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_login")
-	private Long id;
+	@Column(name = "id_usuario_login")
+	private Long idUsuarioLogin;
 	
-	@Column(name = "matricula")
+	@Column(name = "mat")
 	@NonNull
 	private String matricula;
 	
@@ -36,7 +36,7 @@ public class UsuarioLogin implements Serializable{
 	@NonNull
 	private String cpf;
 	
-	@Column(name = "senha")
+	@Column(name = "pass")
 	private int senha;
 
 }

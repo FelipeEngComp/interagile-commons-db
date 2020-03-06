@@ -18,7 +18,7 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name = "tb_materia")
+@Table(name = "tb_livro")
 public class LivroDAO implements Serializable{
 
 	private static final long serialVersionUID = -5661017260069954083L;
@@ -31,24 +31,24 @@ public class LivroDAO implements Serializable{
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_livro")
-	private Long id;
+	private Long idLivro;
 	
 	@Column(name = "titulo")
 	@NonNull
 	private String titulo;
 	
-	@Column(name = "codigo")
+	@Column(name = "cod")
 	@NonNull
 	private String codigo;
 	
-	@Column(name = "qnt_disponivel")
+	@Column(name = "qntdisp")
 	private int qntDisponiveis;
 	
-	@Column(name = "data_emp")
+	@Column(name = "dataemp")
 	@NonNull
 	private Date dataEmprestimo;
 	
-	@Column(name = "dias_emprestimo")
+	@Column(name = "diasemp")
 	private int diasDeEmprestimo;
 	
 

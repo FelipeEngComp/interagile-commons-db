@@ -32,9 +32,9 @@ public class RegistroDAO implements Serializable{
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = "id_registro")
-	private Long id;
+	private Long idRegistro;
 	
-	@Column(name = "matricula")
+	@Column(name = "mat")
 	@NonNull
 	private String matricula;
 	
@@ -42,7 +42,7 @@ public class RegistroDAO implements Serializable{
 	@NonNull
 	private String cpf;
 	
-	@Column(name = "tipo_usuario")
+	@Column(name = "tipousr")
 	private int tipoUsuario;
 
 }

@@ -17,7 +17,7 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name = "tb_black_list")
+@Table(name = "tb_blklist")
 public class BlackListDAO implements Serializable{
 	
 	private static final long serialVersionUID = -8130223220693787884L;
@@ -25,10 +25,10 @@ public class BlackListDAO implements Serializable{
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_blck_list")
+	@Column(name = "id_blklist")
 	private Long id;
-	
-	@Column(name = "matricula")
+	 
+	@Column(name = "mat_blklist")
 	@NonNull
 	private String matricula;
 	
@@ -36,13 +36,13 @@ public class BlackListDAO implements Serializable{
 	@NonNull
 	private String nome;
 	
-	@Column(name = "motivo")
+	@Column(name = "mot")
 	private String motivo;
 	
-	@Column(name = "dias_block")
+	@Column(name = "diasbloq")
 	private int diasBloqueado;
 	
-	@Column(name = "qnt_blocks")
+	@Column(name = "qntbloq")
 	private int qntBloqueios;
 	
 }

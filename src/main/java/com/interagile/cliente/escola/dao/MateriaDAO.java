@@ -1,15 +1,21 @@
 package com.interagile.cliente.escola.dao;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -18,7 +24,7 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name ="tb_materia")
+@Table(name = "tb_materia")
 public class MateriaDAO implements Serializable{
 		
 	
@@ -33,23 +39,28 @@ public class MateriaDAO implements Serializable{
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = "id_materia")
-	private Long id;
+	private Long idMateria;
 	
-	@Column(name = "nome")
 	@NonNull
+	@Column(name = "nome")
 	private String nome;
 	
-	@Column(name = "horas")
+	@Column(name="horas")
 	private int horas;
 	
-	@Column(name = "codigo")
 	@NonNull
+	@Column(name="codigo")
 	private String codigo;
 	
-	@Column(name = "frequencia")
+	@Column(name="freq")
 	private int frequencia;
 	
-	@Column(name = "cursada")
+	@Column(name="cursada")
 	private boolean cursada;
+	
+	@JsonIgnore
+	@JoinColumn(name = "idCurso")
+	@ManyToMany(targetEntity = CursoDAO.class,fetch = FetchType.LAZY)
+	private List<CursoDAO> cursos = new ArrayList<>();
 	
 }
