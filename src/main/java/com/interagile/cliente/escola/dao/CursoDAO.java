@@ -4,14 +4,12 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -52,8 +50,14 @@ public class CursoDAO implements Serializable {
 	@Column(name = "semestres")
 	private int semestres;
 
-	@ManyToMany(targetEntity = MateriaDAO.class, fetch = FetchType.EAGER, cascade = {
-			CascadeType.MERGE }, mappedBy = "cursos")
+//	@JoinColumn(name = "materias")
+//	@ManyToMany(targetEntity = MateriaDAO.class, fetch = FetchType.EAGER, mappedBy = "cursos")
+	
+//	@ManyToMany(fetch = FetchType.LAZY,mappedBy = "cursos",
+//			cascade = {
+//	        CascadeType.ALL
+//	    })
+	@ElementCollection
 	private List<MateriaDAO> materias = new ArrayList<>();
 
 }
