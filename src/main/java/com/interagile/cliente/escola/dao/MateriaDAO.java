@@ -9,6 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.springframework.data.redis.core.RedisHash;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -19,6 +20,7 @@ import lombok.NonNull;
 @Entity
 @Data
 @Table(name = "tb_materia")
+@RedisHash("MateriaDAO")
 public class MateriaDAO implements Serializable{
 		
 	
@@ -29,6 +31,7 @@ public class MateriaDAO implements Serializable{
 	}
 	
 	@JsonInclude(Include.NON_NULL)
+	@org.springframework.data.annotation.Id
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
