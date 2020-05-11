@@ -1,4 +1,4 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -27,11 +27,11 @@ import lombok.NonNull;
 @Entity
 @Data
 @Table(name = "tb_curso")
-public class CursoDAO implements Serializable {
+public class CursoDB implements Serializable {
 
 	private static final long serialVersionUID = -5203036138487050071L;
 
-	public CursoDAO() {
+	public CursoDB() {
 	}
 
 	@JsonInclude(Include.NON_NULL)
@@ -52,8 +52,8 @@ public class CursoDAO implements Serializable {
 	@Column(name = "semestres")
 	private int semestres;
 
-	@OneToMany(targetEntity = MateriaDAO.class, fetch = FetchType.EAGER)
+	@OneToMany(targetEntity = MateriaDB.class, fetch = FetchType.EAGER)
 	@JoinColumn(name = "materias_id")
-	private List<MateriaDAO> materias = new ArrayList<>();
+	private List<MateriaDB> materias = new ArrayList<>();
 
 }

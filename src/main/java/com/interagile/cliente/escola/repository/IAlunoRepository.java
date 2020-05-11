@@ -3,9 +3,9 @@ package com.interagile.cliente.escola.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.interagile.cliente.escola.dao.UsuarioDAO;
+import com.interagile.cliente.escola.model.AlunoDB;
 
 @Repository
-public interface IUsuarioRepository extends JpaRepository<UsuarioDAO, Long>{
+public interface IAlunoRepository extends JpaRepository<AlunoDB, Long>{
 
 }

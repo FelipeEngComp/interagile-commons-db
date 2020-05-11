@@ -1,4 +1,4 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -19,11 +19,11 @@ import lombok.NonNull;
 @Entity
 @Data
 @Table(name = "tb_livro")
-public class LivroDAO implements Serializable{
+public class LivroDB implements Serializable{
 
 	private static final long serialVersionUID = -5661017260069954083L;
 	
-	public LivroDAO(){
+	public LivroDB(){
 		
 	}
 	

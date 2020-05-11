@@ -1,4 +1,4 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 
@@ -19,12 +19,12 @@ import lombok.NonNull;
 @Entity
 @Data
 @Table(name = "tb_materia")
-public class MateriaDAO implements Serializable{
+public class MateriaDB implements Serializable{
 		
 	
 	private static final long serialVersionUID = 6264468496220393607L;
 
-	public MateriaDAO(){
+	public MateriaDB(){
 		
 	}
 	
