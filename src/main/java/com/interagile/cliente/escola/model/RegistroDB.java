@@ -1,13 +1,14 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -17,18 +18,23 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name="tb_usuario_login")
-public class UsuarioLogin implements Serializable{
+@Table(name = "tb_registro")
+public class RegistroDB implements Serializable{
 	
-	private static final long serialVersionUID = -3939672072897853265L;
+	public RegistroDB(){
+		
+	}
+	
+	private static final long serialVersionUID = 2275332031995342513L;
 	
 	@JsonInclude(Include.NON_NULL)
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_login")
-	private Long id;
+	@GeneratedValue(generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
+	@Column(name = "id_registro")
+	private Long idRegistro;
 	
-	@Column(name = "matricula")
+	@Column(name = "mat")
 	@NonNull
 	private String matricula;
 	
@@ -36,7 +42,7 @@ public class UsuarioLogin implements Serializable{
 	@NonNull
 	private String cpf;
 	
-	@Column(name = "senha")
-	private int senha;
+	@Column(name = "tipousr")
+	private int tipoUsuario;
 
 }

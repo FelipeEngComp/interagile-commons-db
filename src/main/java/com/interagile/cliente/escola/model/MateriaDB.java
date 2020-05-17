@@ -1,4 +1,4 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 
@@ -18,31 +18,38 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name = "tb_registro")
-public class RegistroDAO implements Serializable{
+@Table(name = "tb_materia")
+public class MateriaDB implements Serializable{
+		
 	
-	public RegistroDAO(){
+	private static final long serialVersionUID = 6264468496220393607L;
+
+	public MateriaDB(){
 		
 	}
-	
-	private static final long serialVersionUID = 2275332031995342513L;
 	
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(generator = "increment")
 	@GenericGenerator(name = "increment", strategy = "increment")
-	@Column(name = "id_registro")
-	private Long id;
+	@Column(name = "id_materia")
+	private Long idMateria;
 	
-	@Column(name = "matricula")
 	@NonNull
-	private String matricula;
+	@Column(name = "nome")
+	private String nome;
 	
-	@Column(name = "cpf")
+	@Column(name="horas")
+	private int horas;
+	
 	@NonNull
-	private String cpf;
+	@Column(name="codigo")
+	private String codigo;
 	
-	@Column(name = "tipo_usuario")
-	private int tipoUsuario;
-
+	@Column(name="freq")
+	private int frequencia;
+	
+	@Column(name="cursada")
+	private boolean cursada;
+	
 }

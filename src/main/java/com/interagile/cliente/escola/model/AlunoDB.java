@@ -1,4 +1,4 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 import java.util.List;
@@ -10,8 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
@@ -22,19 +22,19 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name ="tb_usuario_faculdade")
-public class UsuarioDAO implements Serializable{
+@Table(name = "tb_usuario")
+public class AlunoDB implements Serializable{
 	
 	private static final long serialVersionUID = 5402066257568990643L;
 	
-	public UsuarioDAO() {
+	public AlunoDB() {
 	}
 	
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_usr")
-	private long id;
+	@Column(name = "id_aluno")
+	private long idAluno;
 	
 	@Column(name = "cpf")
 	@NonNull
@@ -44,33 +44,30 @@ public class UsuarioDAO implements Serializable{
 	@NonNull
 	private String email;
 	
-	@Column(name = "telefone")
+	@Column(name = "tel")
 	private Long telefone;
 	
 	@Column(name = "nome")
 	@NonNull
 	private String nome;
 	
-	@Column(name = "matricula")
+	@Column(name = "mat")
 	@NonNull
 	private String matricula;
 	
-	@Column(name = "tipo_usuario")
-	private int tipoUsuario;
-	
-	@Column(name = "semestre")
+	@Column(name = "smest")
 	private int semestre;
 	
 	@JoinColumn(name = "id_curso")
-	@ManyToOne(fetch = FetchType.EAGER)
-	private CursoDAO curso;
+	@OneToOne(fetch = FetchType.EAGER)
+	private CursoDB curso;
 	
-	@JoinColumn(name = "id_materia")
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<MateriaDAO> materias;
-	
-	@JoinColumn(name = "id_livro")
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<LivroDAO> livros;
+	@OneToMany(targetEntity = MateriaDB.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "materiasCursada_id")
+	private List<MateriaDB> materiasCursada;
+
+	@OneToMany(targetEntity = LivroDB.class, fetch = FetchType.LAZY)
+	@JoinColumn(name = "livrosAlugados_id")
+	private List<LivroDB> livrosAlugados;
 	
 }

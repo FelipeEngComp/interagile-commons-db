@@ -1,4 +1,4 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
 
@@ -17,32 +17,26 @@ import lombok.NonNull;
 
 @Entity
 @Data
-@Table(name = "tb_black_list")
-public class BlackListDAO implements Serializable{
+@Table(name = "tb_usuario_login")
+public class UsuarioLogin implements Serializable{
 	
-	private static final long serialVersionUID = -8130223220693787884L;
+	private static final long serialVersionUID = -3939672072897853265L;
 	
 	@JsonInclude(Include.NON_NULL)
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name = "id_blck_list")
-	private Long id;
+	@Column(name = "id_usuario_login")
+	private Long idUsuarioLogin;
 	
-	@Column(name = "matricula")
+	@Column(name = "mat")
 	@NonNull
 	private String matricula;
 	
-	@Column(name = "nome")
+	@Column(name = "cpf")
 	@NonNull
-	private String nome;
+	private String cpf;
 	
-	@Column(name = "motivo")
-	private String motivo;
-	
-	@Column(name = "dias_block")
-	private int diasBloqueado;
-	
-	@Column(name = "qnt_blocks")
-	private int qntBloqueios;
-	
+	@Column(name = "pass")
+	private int senha;
+
 }

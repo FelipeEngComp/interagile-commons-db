@@ -1,6 +1,7 @@
-package com.interagile.cliente.escola.dao;
+package com.interagile.cliente.escola.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -10,49 +11,49 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.GenericGenerator;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NonNull;
 
+@EqualsAndHashCode(exclude = "materias")
 @Entity
 @Data
-@Table(name ="tb_curso")
-public class CursoDAO implements Serializable{
-	
+@Table(name = "tb_curso")
+public class CursoDB implements Serializable {
+
 	private static final long serialVersionUID = -5203036138487050071L;
 
-	public CursoDAO() {
+	public CursoDB() {
 	}
-	
+
 	@JsonInclude(Include.NON_NULL)
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "increment")
+	@GenericGenerator(name = "increment", strategy = "increment")
 	@Column(name = "id_curso")
 	private long id;
-	
-	@Column(name = "codigo")
+
 	@NonNull
+	@Column(name = "cod")
 	private String codigo;
-	
-	@Column(name = "nome")
+
 	@NonNull
+	@Column(name = "nome")
 	private String nome;
-	
+
 	@Column(name = "semestres")
 	private int semestres;
-	
-	@Column(name = "id_usr")
-	@OneToMany(fetch = FetchType.LAZY)
-	private List<UsuarioDAO> usuarios;
-	
-	@JoinColumn(name = "id_materia")
-	@ManyToMany(fetch = FetchType.LAZY)
-	private List<MateriaDAO> materias;
-	
+
+	@OneToMany(targetEntity = MateriaDB.class, fetch = FetchType.EAGER)
+	@JoinColumn(name = "materias_id")
+	private List<MateriaDB> materias = new ArrayList<>();
+
 }
